@@ -1,14 +1,23 @@
 const arguments = process.argv.slice(2);
 
-const numbers = []
+const numbers = [];
 
 arguments.map((n) => {
-    numbers.push(Number(n))
-})
+  numbers.push(Number(n));
+});
 
-for (i=0; i< numbers.length; i++){
-    if(numbers[i] < numbers[i + 1]){
-        return true
-        
-    } else return false
+let check = false;
+
+for (i = 0; i < numbers.length - 1; i++) {
+  if (numbers[i] < numbers[i + 1]) {
+    check = true;
+  } else {
+    check = false;
+  }
+}
+
+if (check) {
+  console.log("Triée");
+} else {
+  console.log("Pas triée");
 }
