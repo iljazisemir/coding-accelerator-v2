@@ -1,12 +1,13 @@
 const arguments = process.argv.slice(2);
+const number = Number(arguments);
 
 // Fonction
 const findNextPrimeNumber = (n) => {
-  let nextPrimeNumber = n;
-  for (i = 0; nextPrimeNumber < 20; i++) {
-    if (nextPrimeNumber % i === 0) console.log(nextPrimeNumber);
-    nextPrimeNumber += i;
-  }
+  let nextPrimeNumber = n + 1;
+  for (var i = 2; i < nextPrimeNumber; i++)
+    if (nextPrimeNumber % i === 0) {
+      nextPrimeNumber++;
+    }
   console.log(nextPrimeNumber);
 };
 
@@ -17,4 +18,4 @@ const findNextPrimeNumber = (n) => {
 // Résolution
 
 // Résultat
-findNextPrimeNumber(Number(arguments));
+findNextPrimeNumber(number);
