@@ -11,6 +11,9 @@ const findSecondWordInFirstWord = (first, second) => {
       for (j = 0; j < second.length; j++) {
         if (first[i + j] === second[j]) {
           word.push(first[i + j]);
+        } else {
+          word = [];
+          i++;
         }
       }
     }

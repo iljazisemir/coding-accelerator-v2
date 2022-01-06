@@ -1,16 +1,17 @@
 const arguments = process.argv[2].slice("").split("");
 
-console.log(arguments);
-
 // Fonction
 const checkIsNumber = (arg) => {
+  let checkNumber = [];
   for (i = 0; i < arg.length; i++) {
-    console.log(typeof arg[i]);
-    if (Number(arg[i]) === NaN) {
-      console.log("NO");
-    } else {
-      console.log("OK");
+    if (arg[i] == Number(arg[i]) && arg[i] !== " ") {
+      checkNumber.push(arg[i]);
     }
+  }
+  if (checkNumber.length == arg.length) {
+    return true;
+  } else {
+    return false;
   }
 };
 // Gestion des erreurs
@@ -20,4 +21,4 @@ const checkIsNumber = (arg) => {
 // Résolution
 
 // Résultat
-checkIsNumber(arguments);
+console.log(checkIsNumber(arguments));
