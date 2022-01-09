@@ -1,5 +1,7 @@
 const arguments = process.argv.slice(2);
 
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 // Fonction
 const sortSelection = (arg) => {
   const numbers = [];
@@ -14,7 +16,6 @@ const sortSelection = (arg) => {
     for (j = i; j < numbers.length; j++) {
       bleu = numbers[j];
       if (rouge > bleu && bleu !== undefined) {
-        console.log(rouge, bleu);
         rouge = bleu;
         index = j;
       }
@@ -24,9 +25,21 @@ const sortSelection = (arg) => {
       numbers[i] = rouge;
     }
   }
-  console.log(numbers);
+  return numbers;
 };
 
+const asciiOrder = (arg, alphabet) => {
+  const alphabetSplit = alphabet.split("");
+  let index = [];
+  for (i = 0; i < arg.length; i++) {
+    for (j = 0; j < alphabetSplit.length; j++) {
+      if (arg[i][0] == alphabetSplit[j]) {
+        index.push(j);
+      }
+    }
+  }
+  sortSelection(index);
+};
 // Gestion des erreurs
 
 // Parsing
@@ -34,4 +47,4 @@ const sortSelection = (arg) => {
 // Résolution
 
 // Résultat
-sortSelection(arguments);
+asciiOrder(arguments, alphabet);
