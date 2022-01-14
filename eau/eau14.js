@@ -38,13 +38,17 @@ const asciiOrder = (arg, alphabet) => {
       }
     }
   }
-  sortSelection(index);
+  const indexTri = sortSelection(index);
+  let newAsciiOrder = [];
+  for (i = 0; i < indexTri.length; i++) {
+    for (j = 0; j < arg.length; j++) {
+      if (alphabetSplit[indexTri[i]] == arg[j][0]) {
+        newAsciiOrder.push(arg[j]);
+      }
+    }
+  }
+  console.log(newAsciiOrder);
 };
-// Gestion des erreurs
-
-// Parsing
-
-// Résolution
 
 // Résultat
 asciiOrder(arguments, alphabet);
