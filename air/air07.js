@@ -1,10 +1,10 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 let arrayOfNumbers = [];
-for (i = 0; i < arguments.length - 1; i++) {
-  arrayOfNumbers.push(Number(arguments[i]));
+for (i = 0; i < arg.length - 1; i++) {
+  arrayOfNumbers.push(Number(arg[i]));
 }
-let number = Number(arguments[arguments.length - 1]);
+let number = Number(arg[arg.length - 1]);
 
 // Fonction
 const insertionSortArray = (arrayOfNumbers, number) => {

@@ -1,19 +1,19 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 let array1 = [];
-for (i = 0; i < arguments.length; i++) {
-  if (arguments[i] == "fusion") {
+for (i = 0; i < arg.length; i++) {
+  if (arg[i] == "fusion") {
     break;
   } else {
-    array1.push(arguments[i]);
+    array1.push(arg[i]);
   }
 }
 
 let array2 = [];
-for (i = 0; i < arguments.length; i++) {
-  if (arguments[i] == "fusion") {
-    for (j = i + 1; j < arguments.length; j++) {
-      array2.push(arguments[j]);
+for (i = 0; i < arg.length; i++) {
+  if (arg[i] == "fusion") {
+    for (j = i + 1; j < arg.length; j++) {
+      array2.push(arg[j]);
     }
   }
 }

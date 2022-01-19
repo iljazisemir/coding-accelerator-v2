@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const rotateLeft = (arg) => {
@@ -18,4 +18,4 @@ const rotateLeft = (arg) => {
 // Résolution
 
 // Résultat
-rotateLeft(arguments);
+rotateLeft(arg);

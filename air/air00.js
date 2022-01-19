@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const split = (arg, separator) => {
@@ -31,9 +31,9 @@ const error = (arg) => {
 };
 
 // Parsing
-if (error(arguments)) console.log("Erreur");
+if (error(arg)) console.log("Erreur");
 
 // Résolution
 
 // Résultat
-if (!error(arguments)) split(arguments, " ");
+if (!error(arg)) split(arg, " ");

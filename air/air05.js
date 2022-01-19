@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const calculInArray = (arg) => {
@@ -34,4 +34,4 @@ const calculInArray = (arg) => {
 // Résolution
 
 // Résultat
-calculInArray(arguments);
+calculInArray(arg);

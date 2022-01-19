@@ -1,8 +1,7 @@
-const arguments = process.argv.slice(2).toLocaleString();
+const arg = process.argv.slice(2).toLocaleString();
 
-let words = arguments.split(" ");
+let words = arg.split(" ");
 
 words.map((word) => {
-    console.log(word)
-})
-
+  console.log(word);
+});

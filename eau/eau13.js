@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const sortSelection = (arg) => {
@@ -34,4 +34,4 @@ const sortSelection = (arg) => {
 // Résolution
 
 // Résultat
-sortSelection(arguments);
+sortSelection(arg);

@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const bubbleSorting = (arg) => {
@@ -34,4 +34,4 @@ const bubbleSorting = (arg) => {
 // Résolution
 
 // Résultat
-bubbleSorting(arguments);
+bubbleSorting(arg);

@@ -1,4 +1,4 @@
-const arguments = process.argv[2];
+const arg = process.argv[2];
 const stringSeparator = process.argv[3];
 
 // Fonction
@@ -32,16 +32,16 @@ const split = (arg, stringSeparator) => {
 };
 
 // Gestion des erreurs
-const error = (arguments, stringSeparator) => {
-  if (arguments == undefined || stringSeparator == undefined) {
+const error = (arg, stringSeparator) => {
+  if (arg == undefined || stringSeparator == undefined) {
     return true;
   }
 };
 
 // Parsing
-if (error(arguments, stringSeparator)) console.log("Error");
+if (error(arg, stringSeparator)) console.log("Error");
 
 // Résolution
 
 // Résultat
-if (!error(arguments, stringSeparator)) split(arguments, stringSeparator);
+if (!error(arg, stringSeparator)) split(arg, stringSeparator);

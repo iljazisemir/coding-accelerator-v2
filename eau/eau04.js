@@ -1,5 +1,5 @@
-const arguments = process.argv.slice(2);
-const number = Number(arguments);
+const arg = process.argv.slice(2);
+const number = Number(arg);
 
 // Fonction
 const findNextPrimeNumber = (n) => {

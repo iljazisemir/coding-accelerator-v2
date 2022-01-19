@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -51,4 +51,4 @@ const asciiOrder = (arg, alphabet) => {
 };
 
 // Résultat
-asciiOrder(arguments, alphabet);
+asciiOrder(arg, alphabet);

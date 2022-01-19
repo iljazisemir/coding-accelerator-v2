@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const upsideDownSentence = (arg) => {
@@ -8,11 +8,11 @@ const upsideDownSentence = (arg) => {
 };
 
 // Gestion des erreurs
-if (!arguments.length) console.log("error");
+if (!arg.length) console.log("error");
 
 // Parsing
 
 // Résolution
 
 // Résultat
-upsideDownSentence(arguments);
+upsideDownSentence(arg);

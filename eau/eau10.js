@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const findIndex = (arg) => {
@@ -22,4 +22,4 @@ const findIndex = (arg) => {
 // Résolution
 
 // Résultat
-findIndex(arguments);
+findIndex(arg);

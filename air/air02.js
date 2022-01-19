@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const concat = (arg, separator) => {
@@ -17,9 +17,9 @@ const findSeparator = (arg) => {
 // Gestion des erreurs
 
 // Parsing
-const separator = findSeparator(arguments);
+const separator = findSeparator(arg);
 
 // Résolution
 
 // Résultat
-concat(arguments, separator);
+concat(arg, separator);

@@ -1,4 +1,4 @@
-const arguments = process.argv[2].slice("").split("");
+const arg = process.argv[2].slice("").split("");
 
 // Fonction
 const checkIsNumber = (arg) => {
@@ -21,4 +21,4 @@ const checkIsNumber = (arg) => {
 // Résolution
 
 // Résultat
-console.log(checkIsNumber(arguments));
+console.log(checkIsNumber(arg));

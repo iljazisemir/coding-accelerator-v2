@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const findIntruder = (arg) => {
@@ -28,4 +28,4 @@ const findIntruder = (arg) => {
 // Résolution
 
 // Résultat
-findIntruder(arguments);
+findIntruder(arg);

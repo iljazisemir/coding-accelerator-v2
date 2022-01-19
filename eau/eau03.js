@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const fibonacci = (n) => {
@@ -19,6 +19,6 @@ const checkError = (fibonnaciFunction) => {
 // Résolution
 
 // Résultat
-fibonacci(arguments)
-  ? console.log(fibonacci(arguments))
-  : console.log(checkError(fibonacci(arguments)));
+fibonacci(arg)
+  ? console.log(fibonacci(arg))
+  : console.log(checkError(fibonacci(arg)));

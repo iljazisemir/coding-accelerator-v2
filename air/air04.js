@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2).toLocaleString();
+const arg = process.argv.slice(2).toLocaleString();
 
 // Fonction
 const oneAtATime = (arg) => {
@@ -19,4 +19,4 @@ const oneAtATime = (arg) => {
 // Résolution
 
 // Résultat
-oneAtATime(arguments);
+oneAtATime(arg);

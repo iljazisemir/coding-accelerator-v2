@@ -1,10 +1,10 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 let arrayOfWords = [];
-for (i = 0; i < arguments.length - 1; i++) {
-  arrayOfWords.push(arguments[i]);
+for (i = 0; i < arg.length - 1; i++) {
+  arrayOfWords.push(arg[i]);
 }
-let letter = arguments[arguments.length - 1];
+let letter = arg[arg.length - 1];
 
 // Fonction
 const passSanitaire = (arg, string) => {

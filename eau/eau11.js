@@ -1,4 +1,4 @@
-const arguments = process.argv.slice(2);
+const arg = process.argv.slice(2);
 
 // Fonction
 const findAbsoluteMinimum = (arg) => {
@@ -36,4 +36,4 @@ const findAbsoluteMinimum = (arg) => {
 };
 
 // Résultat
-findAbsoluteMinimum(arguments);
+findAbsoluteMinimum(arg);
