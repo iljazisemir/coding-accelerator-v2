@@ -11,6 +11,7 @@ const removeSpace = (argv) => {
   return argvSplit;
 };
 
+// Chercher les parenthèses
 const findBracket = (argv) => {
   let insideBracket = [];
   for (i = 0; i < argv.length; i++) {
@@ -27,9 +28,9 @@ const findBracket = (argv) => {
   return insideBracket;
 };
 
+// Trouver un opérateur spécifique en paramètre
 const findOperator = (argv, operator) => {
   let numberBeforeOperator = "";
-  let numbersOperatorCalcul = [];
   for (i = 0; i < argv.length; i++) {
     if (!isNaN(+argv[i])) numberBeforeOperator += argv[i];
     if (argv[i] == operator) {
@@ -38,17 +39,27 @@ const findOperator = (argv, operator) => {
         if (!isNaN(+argv[j])) numbersAfterOperator += argv[j];
         if (!isNaN(+argv[j]) == false) break;
       }
-      numbersOperatorCalcul.push(
-        numberBeforeOperator,
-        argv[i],
-        numbersAfterOperator
+      
+      console.log(
+        calcul(+numberBeforeOperator, argv[i], +numbersAfterOperator)
       );
-      numbersAfterOperator = "";
-      console.log(numbersOperatorCalcul);
     }
-    if (!isNaN(+argv[i]) == false) numberBeforeOperator = "";
+    if (!isNaN(+argv[i]) == false) {
+      numberBeforeOperator = "";
+      numbersAfterOperator = "";
+    }
   }
 };
+
+// Calculer une opération en paramètre
+const calcul = (n1, operator, n2) => {
+  if (operator == "%") return n1 % n2;
+  if (operator == "*") return n1 * n2;
+  if (operator == "/") return n1 / n2;
+  if (operator == "+") return n1 + n2;
+  if (operator == "-") return n1 - n2;
+};
+
 // Gestion des erreurs
 
 // Parsing
@@ -57,4 +68,4 @@ const argvSplit = removeSpace(argv);
 // Résolution
 
 // Résultat
-findOperator(argvSplit, "+");
+console.log(findOperator(findBracket(argvSplit), "/"));
