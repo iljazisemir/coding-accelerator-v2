@@ -30,35 +30,53 @@ const findBracket = (argv) => {
       }
     }
   }
-  return pushResultInArray(
-    insideBracket,
+  const resultBracket = resultOfCalcul(insideBracket);
+  return pushResultOfBracketInArray(
+    argv,
+    resultBracket,
     indexFirstBracket,
-    indexLastBracket,
-    argv
+    indexLastBracket
   );
 };
 
 // Trouver un opérateur spécifique en paramètre
-const findOperator = (argv, operator) => {
+const findOperatorAndCalcul = (array, operator) => {
+  let arrayOfIndex = [];
+  let index1;
+  let index2;
   let numberBeforeOperator = "";
-  for (i = 0; i < argv.length; i++) {
-    if (!isNaN(+argv[i])) numberBeforeOperator += argv[i];
-    if (argv[i] == operator) {
-      let numbersAfterOperator = "";
-      for (j = i + 1; j < argv.length; j++) {
-        if (!isNaN(+argv[j])) {
-          numbersAfterOperator += argv[j];
+  console.log(array);
+  for (i = 0; i < array.length; i++) {
+    if (array[i] == operator) {
+      for (j = 0; j < i; j++) {
+        if (!isNaN(+array[j])) {
+          numberBeforeOperator += array[j];
+          arrayOfIndex.push(j);
+          index1 = arrayOfIndex[0];
         } else {
-          break;
+          numberBeforeOperator = "";
+          arrayOfIndex = [];
         }
       }
-      return calcul(+numberBeforeOperator, operator, +numbersAfterOperator);
-    }
-    if (!isNaN(+argv[i]) == false) {
-      numberBeforeOperator = "";
-      numbersAfterOperator = "";
+      let numberAfterOperator = "";
+      for (k = i + 1; k < array.length; k++) {
+        if (!isNaN(+array[k])) {
+          numberAfterOperator += array[k];
+          index2 = k;
+        }
+        if (!isNaN(+array[k + 1]) == false) break;
+      }
+      console.log(+numberBeforeOperator, operator, +numberAfterOperator);
+      const result = calcul(
+        +numberBeforeOperator,
+        operator,
+        +numberAfterOperator
+      );
+      const objOfIndexAndResult = { index1, index2, result };
+      return objOfIndexAndResult;
     }
   }
+  console.log("///");
 };
 
 // Calculer une opération en paramètre
@@ -91,51 +109,46 @@ const sortOperator = (array) => {
   return arrayOfOperator;
 };
 
-// Return l'argument avec le résultat de l'opération dans le tableau
-const pushResultInArray = (array, firtIndex, lastIndex, argv) => {
-  let argvWithoutIndex = [];
-  let totalInsideArgv = 0;
-  const arraySortOfOperator = sortOperator(array);
-  for (i = 0; i < firtIndex; i++) {
-    argvWithoutIndex.push(argv[i]);
+// Return l'argument avec le résultat des opérations dans les parenthèse dans le tableau
+const resultOfCalcul = (insideBracket) => {
+  let newInsideBracket = insideBracket;
+  let operator;
+  let objOfIndexAndResult;
+  let index1;
+  let index2;
+  let result;
+  const arraySortOfOperator = sortOperator(insideBracket);
+  for (x = 0; x < arraySortOfOperator.length; x++) {
+    operator = arraySortOfOperator[x];
+    objOfIndexAndResult = findOperatorAndCalcul(newInsideBracket, operator);
+    newInsideBracket = [];
+    index1 = objOfIndexAndResult.index1;
+    index2 = objOfIndexAndResult.index2;
+    result = objOfIndexAndResult.result;
+    for (y = 0; y < index1; y++) {
+      newInsideBracket.push(insideBracket[y]);
+    }
+    newInsideBracket.push(result);
+    for (z = index2 + 1; z < insideBracket.length; z++) {
+      newInsideBracket.push(insideBracket[z]);
+    }
+    insideBracket = newInsideBracket;
   }
-  for (k = 0; k < arraySortOfOperator.length; k++) {
-    totalInsideArgv += findOperator(array, arraySortOfOperator[k]);
-  }
-  argvWithoutIndex.push(totalInsideArgv);
-  for (j = lastIndex + 1; j < argv.length; j++) {
-    argvWithoutIndex.push(argv[j]);
-  }
-  return argvWithoutIndex;
+  return newInsideBracket[0];
 };
 
-// Gestion des erreurs
-
-// Parsing
-const argvWithoutBracket = findBracket(argvSplit);
-let result = 0;
-let newArgv = [];
-// Résolution
+const pushResultOfBracketInArray = (array, result, index1, index2) => {
+  let newArray = [];
+  for (y = 0; y < index1; y++) {
+    newArray.push(array[y]);
+  }
+  newArray.push(result);
+  for (z = index2 + 1; z < array.length; z++) {
+    newArray.push(array[z]);
+  }
+  return newArray;
+};
 
 // Résultat
-const newArraySortOfOperator = sortOperator(argvWithoutBracket);
-let indexNumberBeforeOperator = "";
-for (a = 0; a < newArraySortOfOperator.length; a++) {
-  for (b = 0; b < argvWithoutBracket.length; b++) {
-    if (argvWithoutBracket[b] == newArraySortOfOperator[a]) {
-      for (c = b; c > 0; c--) {
-        if (!isNaN(+argvWithoutBracket[c]) == false) {
-          indexNumberBeforeOperator = c + 1;
-        }
-      }
-      let indexNmberAfterOperator = "";
-      for (d = b; d < argvWithoutBracket.length; d++) {
-        if (!isNaN(+argvWithoutBracket[d]) == false) {
-          indexNmberAfterOperator = d - 1;
-        }
-      }
-    }
-  }
-  result += findOperator(argvWithoutBracket, newArraySortOfOperator[a]);
-}
-console.log(result);
+const argvWithoutBracket = findBracket(argvSplit);
+console.log(resultOfCalcul(argvWithoutBracket));
